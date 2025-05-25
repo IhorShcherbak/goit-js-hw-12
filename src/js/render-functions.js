@@ -1,3 +1,5 @@
+
+
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
@@ -40,10 +42,11 @@ export function clearGallery() {
 
 
 export function showLoader() {
-  loader.classList.remove('hidden');
+ 
+  document.querySelector('#loading-message').classList.remove('hidden');
 }
+
 
 export function hideLoader() {
-  loader.classList.add('hidden');
+  document.querySelector('#loading-message').classList.add('hidden');
 }
-
