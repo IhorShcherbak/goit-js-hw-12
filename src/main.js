@@ -4,6 +4,8 @@ import {
   clearGallery,
   showLoader,
   hideLoader,
+  showLoadMoreButton,
+  hideLoadMoreButton,
 } from './js/render-functions';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadedImages = 0;
 
     clearGallery();
-    hideLoadMore();
+    hideLoadMoreButton();
     showLoader();
 
     try {
@@ -56,9 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
       loadedImages += data.hits.length;
 
       if (loadedImages < totalHits) {
-        showLoadMore();
+        showLoadMoreButton();
       } else {
-        hideLoadMore();
+        hideLoadMoreButton();
         iziToast.info({
           message: "We're sorry, but you've reached the end of search results.",
           position: 'topRight',
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentPage += 1;
 
     showLoader();
-    hideLoadMore();
+    hideLoadMoreButton();
 
     try {
       const data = await getImagesByQuery(currentQuery, currentPage, PER_PAGE);
@@ -98,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const totalPages = Math.ceil(totalHits / PER_PAGE);
       if (currentPage < totalPages) {
-        showLoadMore();
+        showLoadMoreButton();
       } else {
         iziToast.info({
           message: "We're sorry, but you've reached the end of search results.",
@@ -127,11 +129,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function showLoadMore() {
-    loadMoreBtn.classList.remove('hidden');
-  }
-
-  function hideLoadMore() {
-    loadMoreBtn.classList.add('hidden');
-  }
+  
 });

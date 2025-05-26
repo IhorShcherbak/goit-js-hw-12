@@ -50,3 +50,17 @@ export function showLoader() {
 export function hideLoader() {
   document.querySelector('#loading-message').classList.add('hidden');
 }
+export function showLoadMoreButton() {
+  const loadMoreBtn = document.querySelector('.load-more');
+  if (loadMoreBtn) {
+    loadMoreBtn.classList.remove('hidden');
+  }
+}
+
+export function hideLoadMoreButton() {
+  const loadMoreBtn = document.querySelector('.load-more');
+  if (loadMoreBtn) {
+    loadMoreBtn.classList.add('hidden');
+  }
+}
+
